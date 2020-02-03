@@ -8,9 +8,11 @@ namespace CorePractice.Models
 {
     public class MockUserRepository : IUserRepository
     {
+        private List<User> users = new List<User>();
         public User Add(User user)
         {
-            throw new NotImplementedException();
+            users.Add(user);
+            return user;
         }
 
         public User AddGroup(User user, Group group)
@@ -35,7 +37,8 @@ namespace CorePractice.Models
 
         public User Get(string username)
         {
-            throw new NotImplementedException();
+            var user = users.Find(u => u.Username == username);
+            return user;
         }
 
         public List<User> List()

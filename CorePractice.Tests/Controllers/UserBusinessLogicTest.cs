@@ -29,8 +29,8 @@ namespace CorePractice.Tests.Controllers
         public void UserNameAlreadyTaken()
         {
             // Arrange
-            var user1 = new User() { UserId = 1, Username = "User" };
-            var user2 = new User() { UserId = 2, Username = "User" };
+            var user1 = new User() { UserId = 1, Username = "User", Password = "Abcdefg1" };
+            var user2 = new User() { UserId = 2, Username = "User", Password = "Abcdefg1" };
 
             // Act
             userBusinessLogic.Add(user1);
@@ -45,7 +45,7 @@ namespace CorePractice.Tests.Controllers
         public void UserNameCantBeModified()
         {
             // Arrange
-            var user = new User() { UserId = 1, Username = "User" };
+            var user = new User() { UserId = 1, Username = "User", Password = "Abcdefg1" };
             userBusinessLogic.Add(user);
 
             // Act
@@ -115,7 +115,6 @@ namespace CorePractice.Tests.Controllers
             // Arrange
             var user = new User() { UserId = 1, Username = "User 1" };
             var group = new Group() { GroupId = 1, GroupName = "Group 1" };
-
 
             // Act
 

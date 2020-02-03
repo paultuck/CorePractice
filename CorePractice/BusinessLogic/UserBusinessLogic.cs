@@ -60,7 +60,52 @@ namespace CorePractice.BusinessLogic
             {
                 throw new Exception("Password is too short.");
             }
+            if (containsLettersAndNumbers(password) == false)
+            {
+                throw new Exception("Password doesn't contain both letters and numbers.");
+            }
+            if (containsUppercaseCharacter(password) == false)
+            {
+                throw new Exception("Password doesn't contain an uppercase character.");
+            }
             return password;
+        }
+
+        private bool containsLettersAndNumbers(string password)
+        {
+            var lettersAndNumbers = false;
+            var letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var numbers = "0123456789";
+            for(int i = 0; i < password.Length; i++){
+                if (letters.Contains(password[i]))
+                {
+                    for (int j = 0; j < password.Length; j++)
+                    {
+                        if (numbers.Contains(password[j]))
+                        {
+                            lettersAndNumbers = true;
+                            break;
+                        }
+                    }
+                    if (lettersAndNumbers) break;
+                }
+            }
+            return lettersAndNumbers;
+        }
+
+        private bool containsUppercaseCharacter(string password)
+        {
+            var uppercaseCharacter = false;
+            var capitalLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            for (int i = 0; i < password.Length; i++)
+            {
+                if (capitalLetters.Contains(password[i]))
+                {
+                    uppercaseCharacter = true;
+                    break;
+                }
+            }
+            return uppercaseCharacter;
         }
     }
 }

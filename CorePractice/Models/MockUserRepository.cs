@@ -32,7 +32,7 @@ namespace CorePractice.Models
 
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            return users.Find(u => u.UserId == id);
         }
 
         public User Get(string username)
@@ -48,7 +48,18 @@ namespace CorePractice.Models
 
         public User Update(User modifiedUser)
         {
-            throw new NotImplementedException();
+            var user = Get(modifiedUser.UserId);
+            user.Username = modifiedUser.Username;
+            user.DateOfBirth = modifiedUser.DateOfBirth;
+            user.Email = modifiedUser.Email;
+            user.Firstname = modifiedUser.Firstname;
+            user.Groups = modifiedUser.Groups;
+            user.Lastname = modifiedUser.Lastname;
+            user.Mobile = modifiedUser.Mobile;
+            user.Password = modifiedUser.Password;
+            user.Phone = modifiedUser.Phone;
+
+            return user;
         }
     }
 }

@@ -32,14 +32,31 @@ namespace CorePractice.Tests.Controllers
             userBusinessLogic.Add(user2);
 
             // Assert
+            // ExpectedException
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void UserNameCantBeModified()
         {
             // Arrange
+            var user = new User() { UserId = 1, Username = "User" };
+            userBusinessLogic.Add(user);
+
             // Act
+            userBusinessLogic.Update(user.UserId,
+                                    "User1",
+                                    user.Password,
+                                    user.Firstname,
+                                    user.Lastname,
+                                    user.DateOfBirth,
+                                    user.Email,
+                                    user.Phone,
+                                    user.Mobile,
+                                    user.Groups);
+
             // Assert
+            // ExpectedException
         }
 
         [TestMethod]

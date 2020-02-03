@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace CorePractice.Models.Interfaces
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
+        List<User> List();
+        User Get(int id);
+        User Add(User user);
+        User Update(User modifiedUser);
+        User Delete(User user);
+        User AddGroup(User user, Group group);
+        User DeleteGroup(User user, Group group);
     }
 }

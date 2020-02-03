@@ -10,6 +10,7 @@ namespace CorePractice.Models.Interfaces
     {
         List<User> List();
         User Get(int id);
+        User Get(string username);
         User Add(User user);
         User Update(User modifiedUser);
         User Delete(User user);

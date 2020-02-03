@@ -33,6 +33,11 @@ namespace CorePractice.Models
             throw new NotImplementedException();
         }
 
+        public User Get(string username)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<User> List()
         {
             throw new NotImplementedException();

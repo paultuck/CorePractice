@@ -7,15 +7,15 @@ namespace CorePractice.Models
 {
     public class User
     {
-        int UserId { get; set; }
-        string Username { get; set; }
-        string Password { get; set; }
-        string Firstname { get; set; }
-        string Lastname { get; set; }
-        DateTime DateOfBirth { get; set; }
-        string Email { get; set; }
-        string Phone { get; set; }
-        string Mobile { get; set; }
-        List<Group> Groups { get; set; }
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Mobile { get; set; }
+        public List<Group> Groups { get; set; }
     }
 }

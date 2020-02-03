@@ -20,10 +20,17 @@ namespace CorePractice.Tests.Controllers
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void UserNameAlreadyTaken()
         {
             // Arrange
+            var user1 = new User() { UserId = 1, Username = "User" };
+            var user2 = new User() { UserId = 2, Username = "User" };
+
             // Act
+            userBusinessLogic.Add(user1);
+            userBusinessLogic.Add(user2);
+
             // Assert
         }
 

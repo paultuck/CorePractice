@@ -17,17 +17,20 @@ namespace CorePractice.Models
 
         public User AddGroup(User user, Group group)
         {
-            throw new NotImplementedException();
+            user.Groups.Add(group);
+            return user;
         }
 
         public User Delete(User user)
         {
-            throw new NotImplementedException();
+            users.Remove(user);
+            return user;
         }
 
         public User DeleteGroup(User user, Group group)
         {
-            throw new NotImplementedException();
+            user.Groups.Remove(group);
+            return user;
         }
 
         public User Get(int id)
@@ -43,7 +46,7 @@ namespace CorePractice.Models
 
         public List<User> List()
         {
-            throw new NotImplementedException();
+            return users;
         }
 
         public User Update(User modifiedUser)

@@ -11,12 +11,17 @@ namespace CorePractice.Tests.Controllers
     {
         private IUserRepository userRepository;
         private UserBusinessLogic userBusinessLogic;
+        private IGroupRepository groupRepository;
+        private GroupBusinessLogic groupBusinessLogic;
 
         [TestInitialize()]
         public void Startup()
         {
             userRepository = new MockUserRepository();
             userBusinessLogic = new UserBusinessLogic(userRepository);
+
+            groupRepository = new MockGroupRepository();
+            groupBusinessLogic = new GroupBusinessLogic(groupRepository);
         }
 
         [TestMethod]
@@ -52,26 +57,69 @@ namespace CorePractice.Tests.Controllers
                                     user.DateOfBirth,
                                     user.Email,
                                     user.Phone,
-                                    user.Mobile,
-                                    user.Groups);
+                                    user.Mobile);
 
             // Assert
             // ExpectedException
         }
 
         [TestMethod]
-        public void UserPasswordNotStrongEnough()
+        [ExpectedException(typeof(Exception))]
+        public void UserPasswordNotStrongEnoughLength()
         {
             // Arrange
+            var user = new User() { UserId = 1, Password = "abCdef1" };
+
             // Act
+            userBusinessLogic.Add(user);
+
             // Assert
+            // Assert that the password is long enough
+            // ExpectedException
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void UserPasswordNotStrongEnoughNumbersAndLetters()
+        {
+            // Arrange
+            var user = new User() { UserId = 1, Password = "Abcdefgh" };
+
+            // Act
+            userBusinessLogic.Add(user);
+
+            // Assert
+            // Assert that the password has both numbers and letters
+            // ExpectedException
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
+        public void UserPasswordNotStrongEnoughUppercaseCharacter()
+        {
+            // Arrange
+            var user = new User() { UserId = 1, Password = "abcdef12" };
+
+            // Act
+            userBusinessLogic.Add(user);
+
+            // Assert
+            // Assert that the password has a capital letter
+            // ExpectedException
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(Exception))]
         public void UserAlreadyInGroup()
         {
             // Arrange
+            var user = new User() { UserId = 1, Username = "User 1" };
+            var group = new Group() { GroupId = 1, GroupName = "Group 1" };
+
+
             // Act
+
+
             // Assert
         }
     }

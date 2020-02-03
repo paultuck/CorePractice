@@ -162,9 +162,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EFGroupRepository.cs" />
+    <Compile Include="Models\EFUserRepository.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Interfaces\IGroupRepository.cs" />
     <Compile Include="Models\Interfaces\IUserRepository.cs" />
+    <Compile Include="Models\MockGroupRepository.cs" />
     <Compile Include="Models\MockUserRepository.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

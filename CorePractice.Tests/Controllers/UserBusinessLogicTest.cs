@@ -26,5 +26,29 @@ namespace CorePractice.Tests.Controllers
             // Act
             // Assert
         }
+
+        [TestMethod]
+        public void UserNameCantBeModified()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
+
+        [TestMethod]
+        public void UserPasswordNotStrongEnough()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
+
+        [TestMethod]
+        public void UserAlreadyInGroup()
+        {
+            // Arrange
+            // Act
+            // Assert
+        }
     }
 }

@@ -82,6 +82,12 @@ namespace CorePractice.BusinessLogic
             return deletedUser;
         }
 
+        public User RemoveGroup(User user, Group group)
+        {
+            var retrievedUser = userRepository.DeleteGroup(user, group);
+            return retrievedUser;
+        }
+
         private bool containsLettersAndNumbers(string password)
         {
             var lettersAndNumbers = false;
@@ -119,13 +125,14 @@ namespace CorePractice.BusinessLogic
             return uppercaseCharacter;
         }
 
-        public void AddGroup(User user, Group group)
+        public User AddGroup(User user, Group group)
         {
             if (user.Groups.Contains(group))
             {
                 throw new Exception("User is already a member of this Group.");
             }
-            userRepository.AddGroup(user, group);
+            var retrievedUser = userRepository.AddGroup(user, group);
+            return retrievedUser;
         }
     }
 }

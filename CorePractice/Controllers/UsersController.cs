@@ -14,11 +14,15 @@ namespace CorePractice.Controllers
     {
         IUserRepository userRepository;
         UserBusinessLogic userBusinessLogic;
+        IGroupRepository groupRepository;
+        GroupBusinessLogic groupBusinessLogic;
 
         public UsersController()
         {
             userRepository = new EFUserRepository();
             userBusinessLogic = new UserBusinessLogic(userRepository);
+            groupRepository = new EFGroupRepository();
+            groupBusinessLogic = new GroupBusinessLogic(groupRepository);
         }
 
         // GET api/<controller>
@@ -64,6 +68,20 @@ namespace CorePractice.Controllers
             return deletedUser;
         }
 
+        public User AddGroup(int userId, int groupId)
+        {
+            var user = Get(userId);
+            var group = groupBusinessLogic.Get(groupId);
+            user = userBusinessLogic.AddGroup(user, group);
+            return user;
+        }
 
+        public User RemoveGroup(int userId, int groupId)
+        {
+            var user = Get(userId);
+            var group = groupBusinessLogic.Get(groupId);
+            user = userBusinessLogic.RemoveGroup(user, group);
+            return user;
+        }
     }
 }

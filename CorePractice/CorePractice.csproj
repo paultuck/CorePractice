@@ -171,9 +171,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\EFGroup.cs" />
     <Compile Include="Models\EFGroupRepository.cs" />
-    <Compile Include="Models\EFUser.cs" />
     <Compile Include="Models\EFCorePracticeDBContext.cs" />
     <Compile Include="Models\EFUserRepository.cs" />
     <Compile Include="Models\Group.cs" />

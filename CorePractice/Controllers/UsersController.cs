@@ -13,12 +13,12 @@ namespace CorePractice.Controllers
     public class UsersController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public List<User> Get()
         {
             IUserRepository userRepository = new EFUserRepository();
             var userBusinessLogic = new UserBusinessLogic(userRepository);
             var users = userBusinessLogic.List();
-            return new string[] { "value1", "value2" };
+            return users;
         }
 
         // GET api/<controller>/5

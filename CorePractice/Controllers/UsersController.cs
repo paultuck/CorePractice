@@ -40,7 +40,7 @@ namespace CorePractice.Controllers
         }
 
         // Create a new User
-        public User Post(User user)
+        public User Post([FromBody] User user)
         {
             var createdUser = userBusinessLogic.Create(user);
             return createdUser;

@@ -33,7 +33,7 @@ namespace CorePractice.Controllers
         }
 
         // Post method for creating a new group
-        public Group Post(Group group)
+        public Group Post([FromBody] Group group)
         {
             var createdGroup = groupBusinessLogic.Create(group);
             return createdGroup;

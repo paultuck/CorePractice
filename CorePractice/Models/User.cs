@@ -41,6 +41,11 @@ namespace CorePractice.Models
 
         public List<Group> Groups { get; set; }
 
+        public User()
+        {
+
+        }
+
         public User(int UserId, 
                     string Username, 
                     string Password, 

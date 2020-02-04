@@ -13,6 +13,7 @@ namespace CorePractice.Models
         public User Add(User user)
         {
             var retrievedUser = dbContext.users.Add(user);
+            dbContext.SaveChanges();
             return retrievedUser;
         }
 

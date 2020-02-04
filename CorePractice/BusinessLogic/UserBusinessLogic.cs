@@ -37,18 +37,7 @@ namespace CorePractice.BusinessLogic
                 {
                     throw new Exception("Usernames can't be changed.");
                 }
-                var user = new User()
-                {
-                    UserId = userId,
-                    DateOfBirth = dateOfBirth,
-                    Email = email,
-                    Firstname = firstname,
-                    Lastname = lastname,
-                    Mobile = mobile,
-                    Password = validatePassword(password),
-                    Phone = phone,
-                    Username = username
-                };
+                var user = new User(userId, username, validatePassword(password), firstname, lastname, dateOfBirth, email, phone, mobile); ;
                 retrievedUser = userRepository.Update(user);
             }
             return retrievedUser;
@@ -106,6 +95,15 @@ namespace CorePractice.BusinessLogic
                 }
             }
             return uppercaseCharacter;
+        }
+
+        public void AddGroup(User user, Group group)
+        {
+            if (user.Groups.Contains(group))
+            {
+                throw new Exception("User is already a member of this Group.");
+            }
+            userRepository.AddGroup(user, group);
         }
     }
 }

@@ -17,5 +17,28 @@ namespace CorePractice.Models
         public string Phone { get; set; }
         public string Mobile { get; set; }
         public List<Group> Groups { get; set; }
+
+        public User(int UserId, 
+                    string Username, 
+                    string Password, 
+                    string Firstname, 
+                    string Lastname, 
+                    DateTime DateOfBirth,
+                    string Email,
+                    string Phone,
+                    string Mobile
+                    )
+        {
+            this.UserId = UserId;
+            this.Username = Username;
+            this.Firstname = Firstname;
+            this.Lastname = Lastname;
+            this.Password = Password;
+            this.DateOfBirth = DateOfBirth;
+            this.Email = Email;
+            this.Phone = Phone;
+            this.Mobile = Mobile;
+            this.Groups = new List<Group>();
+        }
     }
 }

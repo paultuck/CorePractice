@@ -29,8 +29,8 @@ namespace CorePractice.Tests.Controllers
         public void UserNameAlreadyTaken()
         {
             // Arrange
-            var user1 = new User() { UserId = 1, Username = "User", Password = "Abcdefg1" };
-            var user2 = new User() { UserId = 2, Username = "User", Password = "Abcdefg1" };
+            var user1 = new User(UserId: 1, Username : "User", Password : "Abcdefg1", "", "", DateTime.Now, "", "", "" );
+            var user2 = new User(UserId: 2, Username : "User", Password : "Abcdefg1", "", "", DateTime.Now, "", "", "" );
 
             // Act
             userBusinessLogic.Add(user1);
@@ -45,7 +45,7 @@ namespace CorePractice.Tests.Controllers
         public void UserNameCantBeModified()
         {
             // Arrange
-            var user = new User() { UserId = 1, Username = "User", Password = "Abcdefg1" };
+            var user = new User(UserId: 1, Username: "User", Password: "Abcdefg1", "", "", DateTime.Now, "", "", "");
             userBusinessLogic.Add(user);
 
             // Act
@@ -68,7 +68,7 @@ namespace CorePractice.Tests.Controllers
         public void UserPasswordNotStrongEnoughLength()
         {
             // Arrange
-            var user = new User() { UserId = 1, Password = "abCdef1" };
+            var user = new User(UserId: 1, Username: "User", Password: "abCdef1", "", "", DateTime.Now, "", "", "");
 
             // Act
             userBusinessLogic.Add(user);
@@ -83,7 +83,8 @@ namespace CorePractice.Tests.Controllers
         public void UserPasswordNotStrongEnoughNumbersAndLetters()
         {
             // Arrange
-            var user = new User() { UserId = 1, Password = "Abcdefgh" };
+            var user = new User(UserId: 1, Username: "User", Password: "Abcdefgh", "", "", DateTime.Now, "", "", "");
+
 
             // Act
             userBusinessLogic.Add(user);
@@ -98,7 +99,8 @@ namespace CorePractice.Tests.Controllers
         public void UserPasswordNotStrongEnoughUppercaseCharacter()
         {
             // Arrange
-            var user = new User() { UserId = 1, Password = "abcdef12" };
+            var user = new User(UserId: 1, Username: "User", Password: "abcdef12", "", "", DateTime.Now, "", "", "");
+
 
             // Act
             userBusinessLogic.Add(user);
@@ -113,13 +115,19 @@ namespace CorePractice.Tests.Controllers
         public void UserAlreadyInGroup()
         {
             // Arrange
-            var user = new User() { UserId = 1, Username = "User 1" };
+            var user = new User(UserId: 1, Username: "User", Password: "Abcdefg1", "", "", DateTime.Now, "", "", "");
+
             var group = new Group() { GroupId = 1, GroupName = "Group 1" };
 
-            // Act
+            groupRepository.Add(group);
+            userRepository.Add(user);
 
+            // Act
+            userBusinessLogic.AddGroup(user, group);
+            userBusinessLogic.AddGroup(user, group);
 
             // Assert
+            // ExpectedException
         }
     }
 }

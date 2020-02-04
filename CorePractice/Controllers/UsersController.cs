@@ -12,34 +12,58 @@ namespace CorePractice.Controllers
 {
     public class UsersController : ApiController
     {
+        IUserRepository userRepository;
+        UserBusinessLogic userBusinessLogic;
+
+        public UsersController()
+        {
+            userRepository = new EFUserRepository();
+            userBusinessLogic = new UserBusinessLogic(userRepository);
+        }
+
         // GET api/<controller>
         public List<User> Get()
         {
-            IUserRepository userRepository = new EFUserRepository();
-            var userBusinessLogic = new UserBusinessLogic(userRepository);
             var users = userBusinessLogic.List();
             return users;
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        public User Get(int id)
         {
-            return "value";
+            var user = userBusinessLogic.Get(id);
+            return user;
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        // Create a new User
+        public User Post(User user)
         {
+            var createdUser = userBusinessLogic.Create(user);
+            return createdUser;
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public User Put(User user)
         {
+            var updatedUser = userBusinessLogic.Update(user.UserId, 
+                                                        user.Username, 
+                                                        user.Password, 
+                                                        user.Firstname,
+                                                        user.Lastname,
+                                                        user.DateOfBirth,
+                                                        user.Email,
+                                                        user.Phone,
+                                                        user.Mobile);
+            return updatedUser;
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public User Delete(int id)
         {
+            var deletedUser = userBusinessLogic.Delete(id);
+            return deletedUser;
         }
+
+
     }
 }

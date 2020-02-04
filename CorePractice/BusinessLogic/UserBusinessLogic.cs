@@ -32,6 +32,16 @@ namespace CorePractice.BusinessLogic
             return userRepository.List();
         }
 
+        public User Get(int id)
+        {
+            return userRepository.Get(id);
+        }
+
+        public User Create(User user)
+        {
+            return userRepository.Add(user);
+        }
+
         // Made this function take all the params in seperately to avoid the case where you could update the user entity's username directly
         public User Update(int userId, string username, string password, string firstname, string lastname, DateTime dateOfBirth, string email, string phone, string mobile)
         {
@@ -63,6 +73,13 @@ namespace CorePractice.BusinessLogic
                 throw new Exception("Password doesn't contain an uppercase character.");
             }
             return password;
+        }
+
+        public User Delete(int id)
+        {
+            var user = Get(id);
+            var deletedUser = userRepository.Delete(user);
+            return deletedUser;
         }
 
         private bool containsLettersAndNumbers(string password)

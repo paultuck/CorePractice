@@ -51,9 +51,29 @@ namespace CorePractice.Models
             return dbContext.users.Where(u => u.Username == username).FirstOrDefault();
         }
 
+        public List<User> GetPage(int page, int pageSize)
+        {
+            if (page < 1) page = 1;
+            var currentPage = dbContext.users.OrderBy(u => u.UserId).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            return currentPage;
+        }
+
         public List<User> List()
         {
             return dbContext.users.ToList();
+        }
+
+        public List<User> Search(string searchTerm)
+        {
+            var searchTermsArray = searchTerm.Split(" ".ToCharArray());
+            //Firstname, Lastname, DateOfBirth, Email, Phone, Mobile
+            var foundUsers = dbContext.users.Where(u => searchTermsArray.Any(s => u.Firstname.Contains(s) ||
+                                                        u.Lastname.Contains(s) ||
+                                                        u.DateOfBirth.ToString().Contains(s) ||
+                                                        u.Email.Contains(s) || 
+                                                        u.Phone.Contains(s) ||
+                                                        u.Mobile.Contains(s))).ToList();
+            return foundUsers;
         }
 
         public User Update(User modifiedUser)

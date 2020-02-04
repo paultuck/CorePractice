@@ -16,5 +16,7 @@ namespace CorePractice.Models.Interfaces
         User Delete(User user);
         User AddGroup(User user, Group group);
         User DeleteGroup(User user, Group group);
+        List<User> Search(string searchTerm);
+        List<User> GetPage(int page, int pageSize);
     }
 }

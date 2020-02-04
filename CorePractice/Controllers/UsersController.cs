@@ -68,7 +68,8 @@ namespace CorePractice.Controllers
             return deletedUser;
         }
 
-        public User AddGroup(int userId, int groupId)
+        [HttpGet]
+        public User AddGroup([FromUri] int userId, [FromUri] int groupId)
         {
             var user = Get(userId);
             var group = groupBusinessLogic.Get(groupId);
@@ -82,6 +83,22 @@ namespace CorePractice.Controllers
             var group = groupBusinessLogic.Get(groupId);
             user = userBusinessLogic.RemoveGroup(user, group);
             return user;
+        }
+
+        [HttpGet]
+        [Route("api/users/search")]
+        public List<User> Search([FromUri] string searchTerm)
+        {
+            var foundUsers = userBusinessLogic.Search(searchTerm);
+            return foundUsers;
+        }
+
+        [HttpGet]
+        [Route("api/users/getpage")]
+        public List<User> GetPage([FromUri] int page, [FromUri] int pageSize)
+        {
+            var currentPage = userBusinessLogic.GetPage(page, pageSize);
+            return currentPage;
         }
     }
 }

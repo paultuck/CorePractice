@@ -134,5 +134,15 @@ namespace CorePractice.BusinessLogic
             var retrievedUser = userRepository.AddGroup(user, group);
             return retrievedUser;
         }
+
+        public List<User> Search(string searchTerm)
+        {
+            return userRepository.Search(searchTerm);
+        }
+
+        public List<User> GetPage(int page, int pageSize)
+        {
+            return userRepository.GetPage(page, pageSize);
+        }
     }
 }

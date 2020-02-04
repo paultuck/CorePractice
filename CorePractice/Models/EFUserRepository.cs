@@ -8,6 +8,7 @@ namespace CorePractice.Models
 {
     public class EFUserRepository : IUserRepository
     {
+        EFCorePracticeDBContext dbContext = new EFCorePracticeDBContext();
         public User Add(User user)
         {
             throw new NotImplementedException();

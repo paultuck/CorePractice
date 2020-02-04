@@ -27,6 +27,11 @@ namespace CorePractice.BusinessLogic
             return retrievedUser;
         }
 
+        public List<User> List()
+        {
+            return userRepository.List();
+        }
+
         // Made this function take all the params in seperately to avoid the case where you could update the user entity's username directly
         public User Update(int userId, string username, string password, string firstname, string lastname, DateTime dateOfBirth, string email, string phone, string mobile)
         {
